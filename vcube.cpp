@@ -1033,7 +1033,9 @@ printf("\n---------------------- Inicio da rodada %d -------------------\n\n", r
 			case propose:
 			int valor;
 
-			valor = rand() % 70;
+			srand(time(NULL) + rand()%100);
+			valor = rand() % 80;
+			// valor = 1 + (int)( 100.0 * rand() / ( RAND_MAX + 1.0 ) );
 			printf("[PROPOSE] O nodo %d propos o valor %d\n", token, valor);
 
 			nodo[token].proposal_set.push_back(valor);
