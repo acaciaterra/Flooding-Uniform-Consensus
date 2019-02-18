@@ -16,6 +16,7 @@ Orientador: Prof. Elias P. Duarte Jr.
 #include <algorithm>
 #include <iostream>
 #include <memory>
+#include <time.h>
 
 /*--------eventos--------*/
 #define test 1
@@ -28,7 +29,7 @@ Orientador: Prof. Elias P. Duarte Jr.
 #define propose 8
 #define broadcast_rodada 9
 
-/*--------definicoes usadas pela funcao cisj--------*/
+ /*--------definicoes usadas pela funcao cisj--------*/
 #define POW_2(num) (1<<(num)) //equivale a 2 elevado a num (sendo num o tamanho dos clusters)
 #define VALID_J(j, s) ((POW_2(s-1)) >= j) //verifica se j eh um indice valido para acessar no cluster
 
@@ -653,6 +654,8 @@ int main(int argc, char const *argv[]) {
 	bool res, resb = true;
 	int idx = -1;
 
+	srand(time(NULL));
+	
 //-------variáveis dos eventos passados por arquivo---------
 	char evento[7];
 	int processo;
@@ -1033,7 +1036,6 @@ printf("\n---------------------- Inicio da rodada %d -------------------\n\n", r
 			case propose:
 			int valor;
 
-			srand(time(NULL) + rand()%100);
 			valor = rand() % 80;
 			// valor = 1 + (int)( 100.0 * rand() / ( RAND_MAX + 1.0 ) );
 			printf("[PROPOSE] O nodo %d propos o valor %d\n", token, valor);
